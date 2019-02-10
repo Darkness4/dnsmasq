@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build --tag dns-server .
+docker build --tag dnsmasq .

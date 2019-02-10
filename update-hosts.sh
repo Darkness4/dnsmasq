@@ -1,10 +1,10 @@
 #!/bin/bash
-docker exec dns-server sh -c "rm /data/*"
-docker cp hosts/. dns-server:/data/
-docker exec dns-server sh -c "cat /data/* > /etc/hosts"
+docker exec dnsmasq sh -c "rm /data/*"
+docker cp hosts/. dnsmasq:/data/
+docker exec dnsmasq sh -c "cat /data/* > /etc/hosts"
 echo "Stopping container..."
-docker stop dns-server
+docker stop dnsmasq
 echo "Done. Restarting..."
 echo "Ctrl+P then Ctrl+Q to detach."
-docker start dns-server -ai
+docker start dnsmasq -ai
 
