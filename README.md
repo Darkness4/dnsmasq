@@ -1,5 +1,6 @@
-[200~# Darkness4/dnsmasq
-dnsmasq separated from host's configs
+# Darkness4/dnsmasq
+
+A dnsmasq container, where the configs are separated from host's configs.
 
 ## Usage
 
@@ -37,7 +38,7 @@ server=1.1.1.1
 
 # Whenever /etc/resolv.conf is re-read, clear the DNS
 # cache.  This is useful when new nameservers may have
-#	different data than that held in cache.
+# different data than that held in cache.
 clear-on-reload
 
 # By  default,  dnsmasq  will  send queries to any of the upstream
@@ -60,7 +61,6 @@ cache-size=1000
 ```
 
 Then, run:
-
 
 ```bash
 docker run -it --restart always -v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf -v /path/to/your/hosts:/data/hosts -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dnsmasq darkness4/dnsmasq:latest
@@ -94,7 +94,7 @@ Then, run:
 docker restart dnsmasq
 ```
 
-or, if you want to attach (Ctrl+P then Ctrl+Q to detach):
+or, if you want to attach/detach (Ctrl+P then Ctrl+Q to detach):
 
 ```sh
 docker stop dnsmasq
@@ -115,11 +115,11 @@ Edit any files in hosts.
 
 ##### dnsmasq.conf
 
-If you ran with a volume (-v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf), then edit your /path/to/your/dnsmasq.conf. 
+If you ran with a volume (-v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf), then edit your /path/to/your/dnsmasq.conf.
 
 If not, then, edit/create dnsmasq.conf (if you have the github repo, dnsmasq.conf is in ./conf/)
 
-```bash
+```sh
 docker cp path/to/dnsmasq.conf dnsmasq:/etc/dnsmasq.conf
 ```
 
@@ -147,13 +147,13 @@ Then, **replace** hosts:
 docker exec dnsmasq sh -c "cat /data/* > /etc/hosts"
 ```
 
-Then, run:
+##### run
 
 ```sh
 docker restart dnsmasq
 ```
 
-or, if you want to attach (Ctrl+P then Ctrl+Q to detach):
+or, if you want to attach/detach (Ctrl+P then Ctrl+Q to detach):
 
 ```sh
 docker stop dnsmasq
@@ -162,7 +162,7 @@ docker start dnsmasq -ai
 
 ## License
 
-```
+```txt
 MIT License
 
 Copyright (c) 2019 Marc NGUYEN
