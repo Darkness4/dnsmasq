@@ -4,6 +4,22 @@ A dnsmasq container, where the configs are separated from host's configs.
 
 ## Usage
 
+### From Github (before image build, purpose of the container)
+
+```sh
+git pull https://github.com/Darkness4/dnsmasq.git
+```
+
+Customize ./conf/dnsmasq.conf.
+
+Add/modify files in ./hosts
+
+Then, run:
+
+```sh
+./build.sh && ./run.sh
+```
+
 ### From Docker Hub (after image build)
 
 ```sh
@@ -14,7 +30,7 @@ Create first your own hosts. This file will be **appended** to the container hos
 
 Optionally, create your own dnsmasq.conf.
 
-By default, dnsmasq.conf:
+By default, dnsmasq.conf of the image is:
 
 ```bash
 log-queries
@@ -66,46 +82,13 @@ Then, run:
 docker run -it --restart always -v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf -v /path/to/your/hosts:/data/hosts -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dnsmasq darkness4/dnsmasq:latest
 ```
 
-### From Github (before image build)
-
-```sh
-git pull https://github.com/Darkness4/dnsmasq.git
-```
-
-Customize ./conf/dnsmasq.conf.
-
-Add/modify files in ./hosts
-
-Then, run:
-
-```sh
-./build.sh && ./run.sh
-```
-
 ## Update hosts and configuration files without removing container
-
-### Files created after image build
-
-Edit your /path/to/your/dnsmasq.conf and/or /path/to/your/hosts.
-
-Then, run:
-
-```sh
-docker restart dnsmasq
-```
-
-or, if you want to attach/detach (Ctrl+P then Ctrl+Q to detach):
-
-```sh
-docker stop dnsmasq
-docker start dnsmasq -ai
-```
 
 ### Files created before image build
 
 #### From Github
 
-Edit any files in hosts.
+Edit any files in the hosts folder. Then:
 
 ```sh
 ./update-hosts.sh
@@ -148,6 +131,23 @@ docker exec dnsmasq sh -c "cat /data/* > /etc/hosts"
 ```
 
 ##### run
+
+```sh
+docker restart dnsmasq
+```
+
+or, if you want to attach/detach (Ctrl+P then Ctrl+Q to detach):
+
+```sh
+docker stop dnsmasq
+docker start dnsmasq -ai
+```
+
+### Files created after image build
+
+Edit your /path/to/your/dnsmasq.conf and/or /path/to/your/hosts.
+
+Then, run:
 
 ```sh
 docker restart dnsmasq
