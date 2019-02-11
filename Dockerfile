@@ -8,5 +8,5 @@ ADD hosts /data/
 COPY conf/dnsmasq.conf /etc/dnsmasq.conf
 
 # Bypass Docker DNS Embedded (replace hosts AFTER container start)
-ENTRYPOINT ["/bin/sh", "-c", "cat /data/* >> /etc/hosts && dnsmasq -k"]
+ENTRYPOINT ["cat /data/* >> /etc/hosts && dnsmasq -k"]
 
