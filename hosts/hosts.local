@@ -1,8 +1,0 @@
-127.0.0.1       localhost ip4-localhost ip4-loopback
-::1             localhost ip6-localhost ip6-loopback
-fe00::0         ip6-localnet
-ff02::1         ip6-allnodes
-ff02::2         ip6-allrouters
-ff02::3         ip6-allhosts
-
-# X.X.X.X subdomain.domain
