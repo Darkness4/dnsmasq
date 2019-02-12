@@ -26,7 +26,7 @@ Then, run:
 docker pull darkness4/dnsmasq:latest
 ```
 
-Create first your own hosts. This file will be **appended** to the container hosts (which is nothing).
+Create first your own hosts. This file will **replace** the container hosts (which is nothing).
 
 Optionally, create your own dnsmasq.conf.
 
@@ -79,7 +79,7 @@ cache-size=1000
 Then, run:
 
 ```bash
-docker run -it --restart always -v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf -v /path/to/your/hosts:/data/hosts -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dnsmasq darkness4/dnsmasq:latest
+docker run -it --restart always -v /path/to/your/dnsmasq.conf:/etc/dnsmasq.conf -v /path/to/your/hosts_folder:/data -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN --name dnsmasq darkness4/dnsmasq:latest
 ```
 
 ## Update hosts and configuration files without removing container
@@ -145,7 +145,7 @@ docker start dnsmasq -ai
 
 ### Files created after image build
 
-Edit your /path/to/your/dnsmasq.conf and/or /path/to/your/hosts.
+Edit your /path/to/your/dnsmasq.conf and/or /path/to/your/hosts_folder/my_hosts.
 
 Then, run:
 
