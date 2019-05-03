@@ -3,7 +3,7 @@ SCRIPT_PATH=`dirname $(realpath $0)`
 
 docker run -d \
     --restart always \
-    -p 53:53/tcp 
+    -p 53:53/tcp \
     -p 53:53/udp \
     -p 67:67/ucp \
 	--log-opt max-size=10m \
