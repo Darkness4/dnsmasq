@@ -11,5 +11,5 @@ docker run -d \
     -v ${SCRIPT_PATH}/hosts:/data \
     -v ${SCRIPT_PATH}/conf/dnsmasq.conf:/etc/dnsmasq.conf \
     --cap-add=NET_ADMIN \
-	--name dnsmasq \
-	dnsmasq:latest  # darkness4/dnsmasq:latest
+    --name dnsmasq \
+    dnsmasq:latest  # darkness4/dnsmasq:latest
