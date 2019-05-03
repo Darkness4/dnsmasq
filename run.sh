@@ -5,7 +5,7 @@ docker run -d \
     --restart always \
     -p 53:53/tcp \
     -p 53:53/udp \
-    -p 67:67/ucp \
+    -p 67:67/udp \
 	--log-opt max-size=10m \
     --log-opt max-file=5 \
     -v ${SCRIPT_PATH}/hosts:/data \
