@@ -1,9 +1,9 @@
 FROM alpine:edge
 RUN apk --no-cache add dnsmasq
-EXPOSE 53 53/udp
+EXPOSE 53 53/udp 67/udp
 
 VOLUME /data
-ADD hosts /data/
+ADD hosts-permanent /data/
 
 COPY conf/dnsmasq.conf /etc/dnsmasq.conf
 
